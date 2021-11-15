@@ -84,13 +84,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <meta charset="UTF-8">
     <title>Sign Up</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="../style.css" rel="stylesheet">
     <style>
         body{ font: 14px sans-serif; }
         .wrapper{ width: 360px; padding: 20px; }
     </style>
 </head>
 <body>
-    <div class="wrapper">
+<div class="content-layout">
+    <div class="main-content">    
+<div class="wrapper">
         <h2>Регистрация</h2>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="form-group">
@@ -109,11 +112,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
             </div>
             <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Submit">
-                <input type="reset" class="btn btn-secondary ml-2" value="Reset">
+                <input type="submit" class="btn btn-primary" value="Подтвердить">
+                <input type="reset" class="btn btn-secondary ml-2" value="Сброс">
             </div>
             <p>Уже зарегистрированы? <a href="login.php">Тыкайте сюда</a>.</p>
         </form>
     </div>    
+    </div></div>
 </body>
 </html>

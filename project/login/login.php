@@ -71,15 +71,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>Авторизация</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="../style.css" rel="stylesheet">
     <style>
         body{ font: 14px sans-serif; }
         .wrapper{ width: 360px; padding: 20px; }
     </style>
 </head>
 <body>
-    <div class="wrapper">
+<div class="content-layout">
+    <div class="main-content">
+        <div class="wrapper">
         <h2>Вход</h2>
 
         <?php 
@@ -100,10 +103,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <span class="invalid-feedback"><?php echo $password_err; ?></span>
             </div>
             <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Login">
+                <input type="submit" class="btn btn-primary" value="Вход">
             </div>
             <p>Еще не в системе? <a href="register.php">Зарегистрируйтесь</a>.</p>
         </form>
     </div>
+    </div> </div>
 </body>
 </html>

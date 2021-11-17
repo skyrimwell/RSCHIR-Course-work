@@ -2,8 +2,9 @@
 
 require_once "config.php";
  
-$username = $password = $confirm_password = "";
-$username_err = $password_err = $confirm_password_err = "";
+$username = $password = $confirm_password = $firstname = $lastname = $course_group = "";
+$username_err = $password_err = $confirm_password_err = $firstname_err = $lastname_err = $course_group_err = "";
+
  
 if($_SERVER["REQUEST_METHOD"] == "POST"){
  
@@ -17,12 +18,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         if($stmt = mysqli_prepare($link, $sql)){
             mysqli_stmt_bind_param($stmt, "s", $param_username);
             
-            // Set parameters
             $param_username = trim($_POST["username"]);
             
-            // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
-                /* store result */
                 mysqli_stmt_store_result($stmt);
                 
                 if(mysqli_stmt_num_rows($stmt) == 1){
@@ -55,26 +53,60 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
     }
     
-    if(empty($username_err) && empty($password_err) && empty($confirm_password_err)){
+
+    if(empty(trim($_POST["firstname"]))){
+        $firstname_err = "Введите ваше имя";     
+    }
+    else{
+        $firstname = trim($_POST["firstname"]);
+    }
+
+    if(empty(trim($_POST["lastname"]))){
+        $lastname_err = "Введите ваше имя";     
+    }
+    else{
+        $lastname = trim($_POST["lastname"]);
+    }
+
+    if(empty(trim($_POST["course_group"]))){
+        $course_group_err = "Введите вашу группу";     
+    }
+    else{
+        $course_group = trim($_POST["course_group"]);
+    }
+
+
+    if(empty($username_err) && empty($password_err) && empty($confirm_password_err) && empty($firstname_err) && empty($lastname_err) && empty($course_group_err)){
         
         $sql = "INSERT INTO users (username, password) VALUES (?, ?)";
-         
+
         if($stmt = mysqli_prepare($link, $sql)){
             mysqli_stmt_bind_param($stmt, "ss", $param_username, $param_password);
             
             $param_username = $username;
             $param_password = password_hash($password, PASSWORD_DEFAULT); 
-            
+
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_close($stmt);
+        }
+
+        $sql = "INSERT INTO exams (first_name, last_name, course_group) VALUES (?, ?, ?)";
+        if($stmt = mysqli_prepare($link, $sql)){
+            mysqli_stmt_bind_param($stmt, "sss", $param_firstname, $param_lastname, $param_course_group);
+            $param_firstname = $firstname;
+            $param_lastname = $lastname;
+            $param_course_group = $course_group;
             if(mysqli_stmt_execute($stmt)){
                 header("location: login.php");
             } else{
                 echo "Что-то пошло не так";
             }
-
             mysqli_stmt_close($stmt);
         }
     }
     
+    
+
     mysqli_close($link);
 }
 ?>
@@ -112,9 +144,26 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
             </div>
             <div class="form-group">
+                <label>Ваше имя</label>
+                <input type="firstname" name="firstname" class="form-control <?php echo (!empty($firstname_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $firstname; ?>">
+                <span class="invalid-feedback"><?php echo $firstname_err; ?></span>
+            </div>
+            <div class="form-group">
+                <label>Ваша фамилия</label>
+                <input type="lastname" name="lastname" class="form-control <?php echo (!empty($lastname_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $lastname; ?>">
+                <span class="invalid-feedback"><?php echo $lastname_err; ?></span>
+            </div>
+            <div class="form-group">
+                <label>Ваша группа</label>
+                <input type="course_group" name="course_group" class="form-control <?php echo (!empty($course_group_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $course_group; ?>">
+                <span class="invalid-feedback"><?php echo $course_group_err; ?></span>
+            </div>
+
+            <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Подтвердить">
                 <input type="reset" class="btn btn-secondary ml-2" value="Сброс">
             </div>
+
             <p>Уже зарегистрированы? <a href="login.php">Тыкайте сюда</a>.</p>
         </form>
     </div>    

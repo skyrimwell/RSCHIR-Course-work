@@ -6,7 +6,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: ../login/login.php");
     exit;
 }
-
+include "../clockwork/tableBuilder.php";
 
 ?>
 
@@ -58,19 +58,28 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                     <form action="authmainpage.php" method="POST">
                         <input type="submit" name="tableB" value="Показать">
                     </form>
-                            <?php if(isset($_POST['tableB'])){
-                    include "../clockwork/tableOnGroup.php";
-                    tableBuilder();} 
+                    <?php if(isset($_POST['tableB'])){
+                    tableBuilderOnGroup($tablegen);} 
                     ?>
                 </div>
-                <!-- <hr><p>Что бы узнать все пересдачи преподавателя, введите ФИО преподавателя в поле ниже</p>
+                <div>
+                    <form action="authmainpage.php" method="POST">
+                        <input type="submit" name="destroy" value="Скрыть">
+                    </form>
+                    <?php if(isset($_POST['destroy'])){
+                    destroy($tablegen);} 
+                    ?>
+                </div>
                 <div class="form-group">
-                        <label>ФИО Преподавателя</label>
-                        <input type="fioprep" name="fioprep"
-                            class="form-control <?php echo (!empty($lastname_err)) ? 'is-invalid' : ''; ?>"
-                            value="<?php echo $lastname; ?>">
-                        <span class="invalid-feedback"><?php echo $lastname_err; ?></span>
-                            </div> -->
+                    <label>Поиск по преподавателю</label>
+                    <form name="teacher" action="" method="POST">
+                    <input type="text" name="teacher" id="teacher" >
+                    
+                    </form>
+                    <?php if(isset($_POST['teacher'])){
+                    tableBuilderOnTeacher($_POST['teacher']); }
+                    ?> 
+                </div>
             </div>
         </div>
 </body>

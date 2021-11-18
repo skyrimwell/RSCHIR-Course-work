@@ -54,7 +54,7 @@ include "../clockwork/tableBuilder.php";
 
 
                 <h2>Что бы узнать даты пересдач, нажмите одну из кнопок ниже</h2>
-                <div>
+                <div class="tbl-content">
                     <form action="authmainpage.php" method="POST">
                         <input type="submit" name="tableB" value="Показать">
                     </form>
@@ -62,24 +62,26 @@ include "../clockwork/tableBuilder.php";
                     tableBuilderOnGroup($tablegen);} 
                     ?>
                 </div>
-                <div>
-                    <form action="authmainpage.php" method="POST">
-                        <input type="submit" name="destroy" value="Скрыть">
-                    </form>
-                    <?php if(isset($_POST['destroy'])){
-                    destroy($tablegen);} 
-                    ?>
-                </div>
-                <div class="form-group">
+                <hr>
+                <div class="form-group tbl-content">
                     <label>Поиск по преподавателю</label>
                     <form name="teacher" action="" method="POST">
                     <input type="text" name="teacher" id="teacher" >
                     
                     </form>
                     <?php if(isset($_POST['teacher'])){
-                    tableBuilderOnTeacher($_POST['teacher']); }
+                    tableBuilderOnTeacher($_POST['teacher'],''); }
                     ?> 
                 </div>
+                <hr>
+                <!-- <div >
+                    <form action="authmainpage.php" method="POST">
+                        <input type="submit" name="destroy" value="Скрыть">
+                    </form>
+                    <?php if(isset($_POST['destroy'])){
+                    destroy($tablegen);} 
+                    ?>
+                </div> -->
             </div>
         </div>
 </body>

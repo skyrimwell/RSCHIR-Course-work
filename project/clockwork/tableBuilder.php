@@ -1,34 +1,55 @@
 <?php
-$tablegen = '<table> <thead> <tr>
+$tablegen = '<table cellpadding="0" cellspacing="0" border="0"> <thead> <tr>
 <th> Предмет
 <th> Дата
 <th> Время
-<th> Преподаватель';
+<th> Преподаватель
+<th> Оставшееся время';
 
 
 
 function tableBuilderOnGroup($tablegen)
 {
-    
+    // $today = new DateTime();
+    $destroyer = '
+            <div >
+            <form action="authmainpage.php" method="POST">
+                <input type="submit" name="destroy" value="Скрыть">
+            </form>
+        </div>';
+        
     print $tablegen;
     require_once "../login/config.php";
     $start_query = "SELECT * FROM examdates WHERE course_group='$_SESSION[course_group]'";
 $result_query = mysqli_query($link, $start_query);
 while($data = mysqli_fetch_array($result_query)){
+    // echo gettype($data['date']);
+    // $tdate = new DateTime($data['date']);
+    // $interval = $tdate->diff($today);
     print "<tr>" . "<td>" . $data['exam_name'] . "</td>" .
     "<td>" . $data['date'] .  "</td>" .
     "<td>" . $data['time'] .  "</td>" .
-    "<td>" . $data['teacher'] .  "</td>" ;
+    "<td>" . $data['teacher'] .  "</td>" .
+    // "<td>" . $interval->format('$a Днейs') . "</td>";
+    "<td>" . DateTime::createFromFormat('Y-m-d', date('Y-m-d'))->diff(DateTime::createFromFormat('Y-m-d', $data['date']))->format("%r%a") . " Дней</td>";
 }	
+print $destroyer;
 }
 function tableBuilderOnTeacher($teacher)
 {
-    
-    $tablegen2 = '<table> <thead> <tr>
+    $destroyer = '
+            <div >
+            <form action="authmainpage.php" method="POST">
+                <input type="submit" name="destroy" value="Скрыть">
+            </form>
+        </div>';
+
+    $tablegen2 = '<table cellpadding="0" cellspacing="0" border="0"> <thead> <tr>
     <th> Предмет
     <th> Дата
     <th> Время
-    <th> Группа';
+    <th> Группа
+    <th> Преподаватель';
     print $tablegen2;
     require_once "../login/config.php";
     $start_query = "SELECT * FROM examdates WHERE teacher='$teacher'";
@@ -37,8 +58,10 @@ while($data = mysqli_fetch_array($result_query)){
     print "<tr>" . "<td>" . $data['exam_name'] . "</td>" .
     "<td>" . $data['date'] .  "</td>" .
     "<td>" . $data['time'] .  "</td>" .
-    "<td>" . $data['course_group'] .  "</td>" ;
+    "<td>" . $data['course_group'] .  "</td>" .
+    "<td>" . $data['teacher'] .  "</td>" ;
 }	
+    print $destroyer;
 }
 
 function destroy($tablegen,){

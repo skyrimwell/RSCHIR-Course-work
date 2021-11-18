@@ -6,6 +6,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: ../login/login.php");
     exit;
 }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -52,31 +54,23 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 
                 <h2>Что бы узнать даты пересдач, нажмите одну из кнопок ниже</h2>
-
-                <table>
-                    <thead>
-                        <tr>
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php 
-                        require_once "../login/config.php";
-                    $start_query = "SELECT * FROM examdates WHERE course_group='$_SESSION[course_group]'";
-                    $result_query = mysqli_query($link, $start_query);
-                    while($data = mysqli_fetch_array($result_query)){
-                        ?>
-                        <tr>
-                            <td><?php echo $data['exam_name']?></td>
-                            <td><?php echo $data['date']?></td>
-                            <td><?php echo $data['time']?></td>
-                            <td><?php echo $data['teacher']?></td>
-                        </tr>
-                        <?php
-                    }	
-                ?>
-                    </tbody>
-                </table>
+                <div>
+                    <form action="authmainpage.php" method="POST">
+                        <input type="submit" name="tableB" value="Показать">
+                    </form>
+                            <?php if(isset($_POST['tableB'])){
+                    include "../clockwork/tableOnGroup.php";
+                    tableBuilder();} 
+                    ?>
+                </div>
+                <!-- <hr><p>Что бы узнать все пересдачи преподавателя, введите ФИО преподавателя в поле ниже</p>
+                <div class="form-group">
+                        <label>ФИО Преподавателя</label>
+                        <input type="fioprep" name="fioprep"
+                            class="form-control <?php echo (!empty($lastname_err)) ? 'is-invalid' : ''; ?>"
+                            value="<?php echo $lastname; ?>">
+                        <span class="invalid-feedback"><?php echo $lastname_err; ?></span>
+                            </div> -->
             </div>
         </div>
 </body>

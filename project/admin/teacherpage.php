@@ -86,7 +86,7 @@ require_once "../clockwork/admTableBuilder.php";
                         Группа:<br>
                         <input type="text" name="course_group">
                         <br><br>
-                        <input type="submit" name="save" value="submit">
+                        <input type="submit" name="save" value="Добавить">
                     </form>
                 </div>
             </div>

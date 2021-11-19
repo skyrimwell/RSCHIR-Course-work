@@ -32,7 +32,7 @@
     <div class="content-layout">
         <div class="main-content">
             <div class="mainpagetxt">
-                <p> Автор проекта - Городнов Сергей Алексеевич ИКБО-20-19 </p>
+                <p class = "glow"> Автор проекта - Городнов Сергей Алексеевич ИКБО-20-19 </p>
             </div>
         </div>
     </div>

@@ -17,6 +17,6 @@ if(isset($_POST['save']))
 	 }
 	 mysqli_close($link);
 
-     header("../admin/teacherpage.php");
+     header("Location: ../admin/teacherpage.php");
 }
 ?>

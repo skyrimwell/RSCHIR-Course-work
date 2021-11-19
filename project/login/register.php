@@ -142,7 +142,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <div class="content-layout">
         <div class="main-content">
             <div class="wrapper">
-                <h2>Регистрация</h2>
+                <h1 class="whitetxt">Регистрация</h1>
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                     <div class="form-group">
                         <label>Логин</label>
@@ -192,7 +192,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         <input type="reset" class="btn btn-secondary ml-2" value="Сброс">
                     </div>
 
-                    <p>Уже зарегистрированы? <a href="login.php">Тыкайте сюда</a>.</p>
+                    <p>Уже зарегистрированы? <a href="login.php" class = "whitetxt">Тыкайте сюда</a>.</p>
                 </form>
             </div>
         </div>

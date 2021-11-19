@@ -137,7 +137,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <div class="form-group">
                         <input type="submit" class="btn btn-primary" value="Вход">
                     </div>
-                    <p>Еще не в системе? <a href="register.php">Зарегистрируйтесь</a>.</p>
+                    <p>Еще не в системе? <a class = "whitetxt" href="register.php">Зарегистрируйтесь</a>.</p>
                 </form>
             </div>
         </div>

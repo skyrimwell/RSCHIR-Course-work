@@ -49,11 +49,18 @@ header img {
 .main-content {
     padding: 16px;
     margin-top: 64px;
-    width: 70%;
+    width: 1200px;;
+    font-size: 18px;
+}
+.main-content h1{
+    font-size: 28px;
+}
+.main-content h2 {
+    font-size: 20px;
 }
 
 .content-layout .main-content .mainpagetxt {
-    font-size: 20px;
+    font-size: 18px;
 
 }
 
@@ -63,12 +70,16 @@ ul img {
 }
 
 p {
-    text-align: justify;
+
     width: 93%
 }
 
+h1 .my-5 {
+    font-size: 5px;
+
+}
 .slideshow-container {
-    max-width: 1000px;
+    max-width: 1200px;
     position: relative;
     margin: auto;
     z-index: 0;
@@ -100,7 +111,7 @@ p {
 
 
 .text {
-    font-size: 15px;
+    font-size: 13px;
     padding: 8px 12px;
     position: absolute;
     bottom: 8px;
@@ -200,7 +211,7 @@ td {
 }
 
 th {
-    text-align: left;
+    text-align: center;
 }
 
 thead th {
@@ -231,3 +242,73 @@ body {
     background-color: #4ca1af;
     background-image: linear-gradient(135deg, #4ca1af 0%, #c4e0e5 100%);
 }
+
+.h1, h1 {
+    font-size: 1.5rem;
+}
+
+.tbll {
+    margin-right: 200px;
+}
+.indexlink{
+    color: #fff; 
+}
+
+.whitetxt{
+    color: #fff;
+}
+a.whitetxt:hover  {
+    color: gray;
+}
+.whitebtn{
+    background-color: #fff;
+    color: #000;
+}
+.displayName{
+    color: #fff;
+}
+.btn:not(:disabled):not(.disabled) {
+    cursor: pointer;
+    color: black;
+    background-color: white;
+    border-color: gray;
+}
+
+.teachlink {
+    text-align: center;
+}
+.glow {
+
+    color: #fff;
+    text-align: center;
+    -webkit-animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+    animation: glow 1s ease-in-out infinite alternate;
+  }
+  @keyframes glow {
+    from {
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+    }
+    to {
+      text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+    }
+  }
+  
+  @-webkit-keyframes fade {
+    from {
+      opacity: .4
+    }
+    to {
+      opacity: 1
+    }
+  }
+  
+  @keyframes fade {
+    from {
+      opacity: .4
+    }
+    to {
+      opacity: 1
+    }
+  }
+  

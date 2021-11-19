@@ -51,10 +51,10 @@ require_once "../clockwork/admTableBuilder.php";
             </div>
         </nav>
     </header>
-    <h1 class="my-5">Добро пожаловать, <b><?php echo htmlspecialchars($_SESSION["teachername"]); ?></b>.
+    <h1 class="my-5">Добро пожаловать, <b class = "displayName"><?php echo htmlspecialchars($_SESSION["teachername"]); ?>.</b>
         <div class="content-layout">
             <div class="main-content">
-                <h1><span class="glow2">Начало работы</span> </h1>
+                <h1><span >Начало работы</span> </h1>
                 <hr>
 
 

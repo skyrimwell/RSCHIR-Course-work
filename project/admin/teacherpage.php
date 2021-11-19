@@ -6,7 +6,10 @@ if(!isset($_SESSION["admloggedin"]) || $_SESSION["admloggedin"] !== true){
     header("location: ../login/tlogin.php");
     exit;
 }
-include "../clockwork/admTableBuilder.php";
+?>
+<?php
+require_once "../clockwork/admTableBuilder.php";
+
 
 ?>
 
@@ -29,13 +32,15 @@ include "../clockwork/admTableBuilder.php";
 <body>
     <header class="header">
         <nav class="navbar navbar-expand-lg fixed-top py-3">
-            <div class="container"><span class="navbar-brand text-uppercase font-weight-bold"> Личный кабинет преподавателя</span>
+            <div class="container"><span class="navbar-brand text-uppercase font-weight-bold"> Личный кабинет
+                    преподавателя</span>
                 <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
                     class="navbar-toggler navbar-toggler-right"><i class="fa fa-bars"></i></button>
                 <div id="navbarSupportedContent" class="collapse navbar-collapse">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active"><a href="#" class="nav-link text-uppercase font-weight-bold">Главная
+                        <li class="nav-item active"><a href="../index.php"
+                                class="nav-link text-uppercase font-weight-bold">Главная
                                 <span class="sr-only">(current)</span></a></li>
                         <li class="nav-item"><a href="../about.php" class="nav-link text-uppercase font-weight-bold">О
                                 нас </a></li>
@@ -63,9 +68,28 @@ include "../clockwork/admTableBuilder.php";
                     ?>
                 </div>
                 <hr>
-               
+                <div class="wrapper">
+                    <h2>Добавление переэкзаменовок</h2>
+                    <form method="post" action="../clockwork/insertValues.php">
+                        Название предмета<br>
+                        <input type="text" name="exam_name">
+                        <br>
+                        Дата<br>
+                        <input type="text" name="date">
+                        <br>
+                        Время:<br>
+                        <input type="text" name="time">
+                        <br>
+                        Преподаватель:<br>
+                        <input type="text" name="teacher">
+                        <br>
+                        Группа:<br>
+                        <input type="text" name="course_group">
+                        <br><br>
+                        <input type="submit" name="save" value="submit">
+                    </form>
+                </div>
             </div>
-        </div>
 </body>
 
 </html>

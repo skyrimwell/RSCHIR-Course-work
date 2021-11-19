@@ -134,7 +134,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <body>
     <header class="header">
         <nav class="navbar navbar-expand-lg fixed-top py-3">
-            <div class="container"><span class="navbar-brand text-uppercase font-weight-bold"> Списочек</span>
+            <div class="container"><a href="../index.php"><span class="navbar-brand text-uppercase font-weight-bold">
+                        Списочек</span> </a>
             </div>
         </nav>
     </header>

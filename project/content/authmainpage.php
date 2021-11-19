@@ -35,7 +35,7 @@ include "../clockwork/tableBuilder.php";
                     class="navbar-toggler navbar-toggler-right"><i class="fa fa-bars"></i></button>
                 <div id="navbarSupportedContent" class="collapse navbar-collapse">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active"><a href="#" class="nav-link text-uppercase font-weight-bold">Главная
+                        <li class="nav-item active"><a href="../index.php" class="nav-link text-uppercase font-weight-bold">Главная
                                 <span class="sr-only">(current)</span></a></li>
                         <li class="nav-item"><a href="../about.php" class="nav-link text-uppercase font-weight-bold">О
                                 нас </a></li>
@@ -66,22 +66,14 @@ include "../clockwork/tableBuilder.php";
                 <div class="form-group tbl-content">
                     <label>Поиск по преподавателю</label>
                     <form name="teacher" action="" method="POST">
-                    <input type="text" name="teacher" id="teacher" >
-                    
+                        <input type="text" name="teacher" id="teacher">
+
                     </form>
                     <?php if(isset($_POST['teacher'])){
                     tableBuilderOnTeacher($_POST['teacher'],''); }
-                    ?> 
+                    ?>
                 </div>
                 <hr>
-                <!-- <div >
-                    <form action="authmainpage.php" method="POST">
-                        <input type="submit" name="destroy" value="Скрыть">
-                    </form>
-                    <?php if(isset($_POST['destroy'])){
-                    destroy($tablegen);} 
-                    ?>
-                </div> -->
             </div>
         </div>
 </body>

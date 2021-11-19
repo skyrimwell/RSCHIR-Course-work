@@ -8,5 +8,3 @@
 	header('Location: '.$uri.'/project/');
 	exit;
 ?>
-Something is wrong with the XAMPP installation :-(
-	

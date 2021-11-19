@@ -10,7 +10,6 @@ $tablegen = '<table cellpadding="0" cellspacing="0" border="0"> <thead> <tr>
 
 function tableBuilderOnGroup($tablegen)
 {
-    // $today = new DateTime();
     $destroyer = '
             <div >
             <form action="authmainpage.php" method="POST">
@@ -23,14 +22,10 @@ function tableBuilderOnGroup($tablegen)
     $start_query = "SELECT * FROM examdates WHERE course_group='$_SESSION[course_group]'";
 $result_query = mysqli_query($link, $start_query);
 while($data = mysqli_fetch_array($result_query)){
-    // echo gettype($data['date']);
-    // $tdate = new DateTime($data['date']);
-    // $interval = $tdate->diff($today);
     print "<tr>" . "<td>" . $data['exam_name'] . "</td>" .
     "<td>" . $data['date'] .  "</td>" .
     "<td>" . $data['time'] .  "</td>" .
     "<td>" . $data['teacher'] .  "</td>" .
-    // "<td>" . $interval->format('$a Днейs') . "</td>";
     "<td>" . DateTime::createFromFormat('Y-m-d', date('Y-m-d'))->diff(DateTime::createFromFormat('Y-m-d', $data['date']))->format("%r%a") . " Дней</td>";
 }	
 print $destroyer;
